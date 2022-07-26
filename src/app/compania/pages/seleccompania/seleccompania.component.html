@@ -1,10 +1,40 @@
-<h1>Dashboard</h1>
-<hr>
-<p>
-    Esta pagina solo funciona si estas autenticado
-</p>
+<!-- <div class="row">
+    <div class="col">
+        <form class="login100-form" autocomplete="off" [formGroup]="Formcompania" (ngSubmit)="entrar()">
+            <div class="mb-6 row">
+                <p>
+                    <img class="resize" src="assets/images/1.png">
+                </p>
+            </div>
 
-<h4>Usert Info</h4>
-<pre>{{usuario|json}}</pre>
-<pre>...</pre>
-<button (click)="logout()">Logout</button>
+            <div class="mb-3 row">
+                <div class="col-sm-9">
+                    <span class="login100-form-title p-b-30">
+                        Bienvenido
+                    </span>
+                </div>
+                <div class="wrap-input100 m-b-23">
+                    <label class="form-label">Compañía:</label>
+                    <select class="form-control" formControlName="compania">
+                        <option value="">--Seleccione la compañía--</option>
+                        <option *ngFor="let compania of companyaccount" 
+                        [value]="compania.bsc_company.companyid">{{compania.bsc_company.name}} - {{compania.bsc_company.bsc_city.name}}</option>
+                        </select>
+                </div>
+                <div class="text-right p-t-8 p-b-31"></div>
+                <div class="container-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn" type="submit" [disabled]="Formcompania.invalid">
+                            Ingresar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div> -->
+
+
+<pre>Prueba</pre>
+<!-- <button (click)="logout()">Logout</button> -->

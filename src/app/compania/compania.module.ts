@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { CompaniaRoutingModule } from './compania-routing.module';
 import { SeleccompaniaComponent } from './pages/seleccompania/seleccompania.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthModule } from '../auth/auth.module';
 
 
 @NgModule({
@@ -11,7 +13,11 @@ import { SeleccompaniaComponent } from './pages/seleccompania/seleccompania.comp
   ],
   imports: [
     CommonModule,
-    CompaniaRoutingModule
-  ]
+    CompaniaRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    AuthModule
+  ],
+  exports:[ReactiveFormsModule]
 })
 export class CompaniaModule { }

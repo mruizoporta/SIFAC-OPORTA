@@ -1,0 +1,43 @@
+<form class="login100-form" autocomplete="off" [formGroup]="miFormulario">
+
+    <div class="mb-6 row">
+        <p>
+            <img class="resize" src="assets/images/1.png">
+        </p>
+    </div>
+    <div class="mb-6 row">
+        <span class="login100-form-title p-b-49">
+            Bienvenido
+        </span>
+
+        <div class="wrap-input100 m-b-23">
+            <label class="form-label">Compañía:</label>
+            <select class="form-control" formControlName="compania">
+                <option value="">--Seleccione la compañía--</option>
+                <option *ngFor="let compania of companyaccount" 
+                [value]="compania.bsc_company.companyid">{{compania.bsc_company.name}} - {{compania.bsc_company.bsc_city.name}}</option>
+                </select>
+        </div>
+
+        <div class="container-login100-form-btn m-b-13">
+            <div class="wrap-login100-form-btn">
+                <div class="login100-form-bgbtn"></div>
+                <button class="login100-form-btn" type="button" (click)="entrar()" [disabled]="miFormulario.invalid">
+                    Ingresar
+                </button>
+
+            </div>
+        </div>
+
+        <div class="container-login100-form-btn">
+            <div class="wrap-login100-form-btn">
+                <div class="login100-form-bgbtn"></div>
+                <button class="login100-form-btn" type="button" (click)="logout()">
+                    Salir
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+</form>

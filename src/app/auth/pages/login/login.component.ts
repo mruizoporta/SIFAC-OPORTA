@@ -6,13 +6,15 @@ import swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styles: [
+  styles: [`
+        .resize {weight: 40px; height: 100px;display:block;margin-left: auto;margin-right: auto;}
+  `
   ]
 })
 export class LoginComponent  {
   
   miFormulario: FormGroup = this.fb.group({
-    email: ['mruiz2@gmail.com', [Validators.required, Validators.email]],
+    email: ['mruiz@gmail.com', [Validators.required, Validators.email]],
     password: ['12345678910', [Validators.required, Validators.minLength(6)]]
   })
 
@@ -27,7 +29,7 @@ export class LoginComponent  {
       console.log(ok);
       if(ok===true){
         
-        this.router.navigateByUrl('/compania');
+        this.router.navigateByUrl('/auth/compania');
       }
       else{swal.fire('Error', ok, 'error');
 

@@ -8,10 +8,16 @@ const routes: Routes = [
     loadChildren:() => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path:'compania',
-    loadChildren:() => import('./compania/compania.module').then(m => m.CompaniaModule),
+    path:'dashboard',
+    loadChildren:() => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
     canActivate:[ValidarTokenGuard],
     canLoad:[ValidarTokenGuard]
+  },
+  {
+    path:'categorias',
+    loadChildren: ()=> import('./categorias/categorias.module').then(m=> m.CategoriasModule),
+    canLoad:[ValidarTokenGuard],
+    canActivate:[ValidarTokenGuard]
   },
   {
     path:'**',

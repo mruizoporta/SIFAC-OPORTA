@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { AuthResponse, Usuario } from '../interface/auth.interface';
+import { AuthResponse, CompanyAccountResponse, Usuario } from '../interface/auth.interface';
 import {catchError, map} from 'rxjs/operators';
 import { of, tap, Observable } from 'rxjs';
 
@@ -14,23 +14,24 @@ export class AuthService {
   private _usuario!: Usuario;
 
   get usuario(){
+    
     return {... this._usuario}
   }
   constructor( private http: HttpClient) { }
 
   login(email: string, password:string){
-    const url= `${this.baseUrl}/auth/login`;
-    console.log(url);
+    const url= `${this.baseUrl}/auth/login`;   
     const body = { email, password} ;
 
     return this.http.post<AuthResponse>(url, body)
     .pipe(
       tap(resp=> {
-        localStorage.setItem('token', resp.token!)
+        localStorage.setItem('token', resp.token!)        
         this._usuario={
                     email: resp.email!,
                     id: resp.accountid!
-        }       
+        }     
+        
       }),
       map( resp => resp.ok),
       catchError(err => of(err.error.msg)
@@ -55,6 +56,11 @@ export class AuthService {
               }),
               catchError(err=> of(false))
             )
+  }
+
+  getCompanyByAccount(id:string):Observable<CompanyAccountResponse[]>{  
+    console.log('entro al metodo' + id);
+    return this.http.get<CompanyAccountResponse[]>(`${this.baseUrl}/companyaccount/${id}`);
   }
 
   logout(){
