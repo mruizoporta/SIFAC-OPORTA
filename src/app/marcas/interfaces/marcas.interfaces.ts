@@ -1,10 +1,10 @@
-export interface categoryResponse {
-    categoryid: number,
+export interface brandResponse {
+    brandid: number,
     name: string,
     description: string 
 }
 
-export interface Category {
+export interface Brand {
     name: string;
     description: string;
     isactive: number;

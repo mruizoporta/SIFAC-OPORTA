@@ -20,6 +20,12 @@ const routes: Routes = [
     canActivate:[ValidarTokenGuard]
   },
   {
+    path:'marcas',
+    loadChildren: ()=> import('./marcas/marcas.module').then(m=> m.MarcasModule),
+    canLoad:[ValidarTokenGuard],
+    canActivate:[ValidarTokenGuard]
+  },
+  {
     path:'**',
     redirectTo: 'auth'
   }

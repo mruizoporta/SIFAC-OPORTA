@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { AuthResponse, CompanyAccountResponse, Usuario } from '../interface/auth.interface';
+import { AuthResponse,  CompanyAccountResponse, Usuario } from '../interface/auth.interface';
 import {catchError, map} from 'rxjs/operators';
 import { of, tap, Observable } from 'rxjs';
 
@@ -13,8 +13,7 @@ export class AuthService {
   private baseUrl:string = environment.baseUrl;
   private _usuario!: Usuario;
 
-  get usuario(){
-    
+  get usuario(){    
     return {... this._usuario}
   }
   constructor( private http: HttpClient) { }
@@ -31,6 +30,7 @@ export class AuthService {
                     email: resp.email!,
                     id: resp.accountid!
         }     
+        console.log(this._usuario);
         
       }),
       map( resp => resp.ok),
@@ -49,7 +49,7 @@ export class AuthService {
               map(resp=> {
                 localStorage.setItem('token', resp.token!)
                     this._usuario={
-                    email: resp.email!,
+                    email:resp.email!,
                     id: resp.accountid!
                 }  
                 return resp.ok;
@@ -58,8 +58,7 @@ export class AuthService {
             )
   }
 
-  getCompanyByAccount(id:string):Observable<CompanyAccountResponse[]>{  
-    console.log('entro al metodo' + id);
+  getCompanyByAccount(id:string):Observable<CompanyAccountResponse[]>{     
     return this.http.get<CompanyAccountResponse[]>(`${this.baseUrl}/companyaccount/${id}`);
   }
 

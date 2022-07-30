@@ -6,6 +6,8 @@ import { MainHeaderComponent } from './main-header/main-header.component';
 import { MainSidebarComponent } from './main-sidebar/main-sidebar.component';
 import { ControlSidebarComponent } from './control-sidebar/control-sidebar.component';
 import { MainFooterComponent } from './main-footer/main-footer.component';
+import { DialogoConfirmacionComponent } from './dialogo-confirmacion/dialogo-confirmacion.component';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -13,11 +15,13 @@ import { MainFooterComponent } from './main-footer/main-footer.component';
     MainHeaderComponent,
     MainSidebarComponent,    
     ControlSidebarComponent,
-    MainFooterComponent
+    MainFooterComponent,
+    DialogoConfirmacionComponent    
   ],
   imports: [
     CommonModule,
-    SharedRoutingModule
+    SharedRoutingModule,
+    MaterialModule
   ],
   exports:[   
     MainHeaderComponent,

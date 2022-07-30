@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthModule } from './auth/auth.module';
+import { ToastrModule } from 'ngx-toastr';
 
+//import { AgregarComponent } from './components/agregar/agregar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ////AgregarComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +22,13 @@ import { AuthModule } from './auth/auth.module';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule ,
+    ToastrModule.forRoot({
+      timeOut:3000,
+      positionClass:'toast-top-right',
+      preventDuplicates:false
+    }),
+    BrowserAnimationsModule
   ],
   exports:[ReactiveFormsModule],
   providers: [],

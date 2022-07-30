@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CompanyAccountResponse } from '../../interface/auth.interface';
 import { AuthService } from '../../services/auth.service';
@@ -13,18 +13,25 @@ import { AuthService } from '../../services/auth.service';
 ]
 })
 export class AuthCompaniaComponent implements OnInit {
+
   companyaccount : CompanyAccountResponse[]=[];
-  
-  miFormulario: FormGroup = this.fb.group({
+
+  miFormulario: UntypedFormGroup = this.fb.group({
     compania: ['',Validators.required]
   })
   
-  get usuario(){
-    console.log('entro al usuario');
+  get usuario(){    
     return this.authService.usuario;
   }
 
-  constructor(private fb:FormBuilder,
+  saveCompany() {
+    sessionStorage.setItem('company', this.miFormulario.value.compania);   
+  }
+  getCompany() {
+    return sessionStorage.getItem('company');
+  }
+
+  constructor(private fb:UntypedFormBuilder,
     private router:Router, 
     private authService: AuthService   ) { }
 
@@ -44,6 +51,8 @@ export class AuthCompaniaComponent implements OnInit {
       this.authService.logout();
     }
     entrar(){
+      console.log(this.miFormulario.value);
+       this.saveCompany();      
       this.router.navigateByUrl('/dashboard');
       console.log('entrar');
     }
