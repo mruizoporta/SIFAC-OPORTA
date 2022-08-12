@@ -1,0 +1,69 @@
+::ng-deep .example-spacer {
+    flex: 1 1 auto;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+td,
+th {
+    width: 15%;
+}
+
+.mat-header-cell {
+    background: #7E2FB6;
+    color: white
+}
+
+ ::ng-deep .mat-sort-header-arrow[style] {
+    .mat-sort-header-stem {
+        display: none;
+    }
+    .mat-sort-header-indicator {
+        opacity: 10;
+        color: white;
+        font-weight: bold;
+        .mat-sort-header-pointer-left,
+        .mat-sort-header-pointer-right,
+        .mat-sort-header-pointer-middle {
+            display: none;
+        }
+    }
+}
+
+// My custom ascending arrow
+[aria-sort='ascending'] {
+     ::ng-deep .mat-sort-header-arrow {
+        .mat-sort-header-indicator {
+            &::before {
+                content: '\25B4';
+                top: -0em;
+                position: absolute;
+                color: white;
+                font-size: 30px;
+                line-height: 10px;
+            }
+        }
+    }
+}
+
+// My custom descending arrow
+[aria-sort='descending'] {
+     ::ng-deep .mat-sort-header-arrow {
+        .mat-sort-header-indicator {
+            &::before {
+                content: '\25BE';
+                top: -15px;
+                position: absolute;
+                color: white;
+                font-size: 30px;
+            }
+        }
+    }
+}

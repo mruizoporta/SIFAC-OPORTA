@@ -1,0 +1,93 @@
+<app-main-header></app-main-header>
+<app-main-sidebar></app-main-sidebar>
+<div class="content-wrapper ">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <mat-toolbar color="primary">
+                    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon> supervised_user_circle</mat-icon>
+    </button>
+                    <span>Rutas</span>
+                    <span class="example-spacer"></span>
+                    <button mat-raised-button mt-2 color="warn" [routerLink]="['/ruta/agregar']">Nuevo
+                        <span class="material-icons">add</span>
+                    </button>
+                    <span class="spacer"></span>
+                    <!-- <button mat-raised-button (click)="exportToExcel()">
+        <mat-icon><span class="material-icons">
+            file_download
+            </span></mat-icon>
+    </button> -->
+
+                </mat-toolbar>
+
+                <div class="container">
+                    <div style="margin-top: 10px;">
+                        <mat-form-field appearance="standard">
+                            <mat-label>Buscar</mat-label>
+                            <input matInput (keyup)="applyFilter($event)" placeholder="Busqueda" #input>
+                        </mat-form-field>
+
+                        <div class="mat-elevation-z8">
+                            <table id="RutaTable" mat-table [dataSource]="dataSource" matSort>
+
+                                <ng-container matColumnDef="code">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Codigo </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.code}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="name">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="supervisor">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Supervisor </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.supervisor}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="collector">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Colector </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.collector}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="secretaria">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Secreataria(o) </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.secretaria}} </td>
+                                </ng-container>
+                                < <ng-container matColumnDef="action">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <button mat-icon-button color="primary" [routerLink]="['/ruta/editar',row.routeid]">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                                        <button (click)="mostrarConfirmacionEliminar(row.routeid)" mat-icon-button color="warn">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+
+                                    </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                                    <tr class="mat-row" *matNoDataRow>
+                                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                                    </tr>
+                            </table>
+
+                            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content ">
+
+    </section>
+</div>
+
+<app-control-sidebar></app-control-sidebar>
+<app-main-footer></app-main-footer>

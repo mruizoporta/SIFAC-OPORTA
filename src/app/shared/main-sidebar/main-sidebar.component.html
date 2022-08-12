@@ -1,34 +1,22 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4 ">
-    <!-- Brand Logo -->
     <a href="categorias/lista" class="brand-link ">
         <img src="assets/images/4.png " alt="SIFAC " class="brand-image img-circle ">
         <span class="brand-text font-weight-light ">SIFAC v1.0</span>
     </a>
-
-    <!-- Sidebar -->
     <div class="sidebar ">
-        <!-- Sidebar Menu -->
         <nav class="mt-2 ">
             <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview " role="menu " data-accordion="false ">
                 <li class="nav-item ">
-                    <a href="# " class="nav-link ">
+                    <a href="# " [class]="getClaseCSS( 'Dashboard' )" (click)="activarMenu( 'Dashboard' )">
                         <i class="nav-icon fas fa-chart-pie "></i>
                         <p> Dashboard
                         </p>
                     </a>
                 </li>
                 <li class="nav-header ">CONFIGURACION</li>
-                <li class="nav-item ">
-                    <a href="# " class="nav-link ">
-                        <i class="nav-icon fa fa-building"></i>
-                        <p>
-                            Compañias
 
-                        </p>
-                    </a>
-                </li>
                 <li class="nav-item ">
-                    <a href="# " class="nav-link ">
+                    <a href="empleado/lista" [class]="getClaseCSS( 'Empleados' )" (click)="activarMenu( 'Empleados' )">
                         <i class=" nav-icon fa fa-address-book"></i>
                         <p> Empleados</p>
 
@@ -36,7 +24,15 @@
                 </li>
                 <li class="nav-header ">CATALOGOS</li>
                 <li class="nav-item ">
-                    <a href="categorias/lista " class="nav-link ">
+                    <a href="zona/lista " [class]="getClaseCSS( 'Zonas' )" (click)="activarMenu( 'Zonas' )">
+                        <i class="nav-icon fa fa-map-marker"></i>
+                        <p>
+                            Zonas
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="categorias/lista " [class]="getClaseCSS( 'Categorias' )" (click)="activarMenu( 'Categorias' )">
                         <i class="nav-icon fa fa-th-large"></i>
                         <p>
                             Categorias
@@ -44,23 +40,16 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="marcas/lista " class="nav-link ">
+                    <a href="marcas/lista " [class]="getClaseCSS( 'Marcas' )" (click)="activarMenu( 'Marcas' )">
                         <i class="nav-icon fa fa-bold"></i>
                         <p>
                             Marcas
                         </p>
                     </a>
                 </li>
+
                 <li class="nav-item ">
-                    <a href="# " class="nav-link ">
-                        <i class="nav-icon fa fa-archive"></i>
-                        <p>
-                            Bodegas
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a href="# " class="nav-link ">
+                    <a href="producto/lista " [class]="getClaseCSS( 'Productos' )" (click)="activarMenu( 'Productos' )">
                         <i class="nav-icon fas fa-table "></i>
                         <p>
                             Productos
@@ -68,14 +57,21 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="# " class="nav-link ">
+                    <a href="ruta/lista " [class]="getClaseCSS( 'Rutas' )" (click)="activarMenu( 'Rutas' )">
                         <i class="nav-icon  fa fa-random"></i>
                         <p>
                             Rutas
                         </p>
                     </a>
                 </li>
-
+                <!-- <li class="nav-item ">
+                    <a href="# " class="nav-link ">
+                        <i class="nav-icon fa fa-archive"></i>
+                        <p>
+                            Bodegas
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-header ">CUENTAS</li>
                 <li class="nav-item ">
                     <a href="# " class="nav-link ">
@@ -143,10 +139,10 @@
                             Encargos
                         </p>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </nav>
-        <!-- /.sidebar-menu -->
+
     </div>
-    <!-- /.sidebar -->
+
 </aside>

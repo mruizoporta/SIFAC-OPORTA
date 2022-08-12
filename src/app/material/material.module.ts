@@ -16,6 +16,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [],
@@ -37,7 +40,10 @@ import { MatSortModule } from '@angular/material/sort';
     MatTableModule ,
     MatPaginatorModule  ,
     MatSortModule,
-     
+    MatDatepickerModule,
+    MatSidenavModule,
+    MatExpansionModule,
+    MatCheckboxModule
   ]
 })
 export class MaterialModule { }

@@ -1,0 +1,175 @@
+<app-main-header></app-main-header>
+<app-main-sidebar></app-main-sidebar>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 mat-dialog-title>{{titulo}}</h1>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <form class="example-form" [formGroup]="addProductoForm" autocomplete="off">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Información general</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <mat-form-field class="productoinput-full-width" appearance="outline">
+                                    <mat-label>Codigo</mat-label>
+                                    <input formControlName="code" matInput placeholder="Codigo">
+                                    <span *ngIf="campoEsValido('code')" class="form-text text-danger">El codigo es requerido</span>
+                                </mat-form-field>
+                                <mat-checkbox class="example-margin" formControlName="psr" (change)="desabilitar($event)">Producto sin referencia</mat-checkbox>
+                            </div>
+                            <div class="form-group">
+                                <mat-form-field class="productoinput-full-width" appearance="outline">
+                                    <mat-label>Nombre</mat-label>
+                                    <input formControlName="name" matInput placeholder="Nombre">
+                                    <span *ngIf="campoEsValido('name')" class="form-text text-danger">El nombre es requerido</span>
+                                </mat-form-field>
+                            </div>
+                            <div class="form-group">
+                                <mat-form-field class="productoinput-full-width" appearance="outline">
+                                    <mat-select placeholder="Categorias" formControlName="categoryid">
+                                        <mat-option *ngFor="let categoria of categorias" [value]="categoria.categoryid">
+                                            {{ categoria.name }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="form-group">
+                                <mat-form-field class="productoinput-full-width" appearance="outline">
+                                    <mat-select placeholder="Marcas" formControlName="brandid">
+                                        <mat-option *ngFor="let marca of marcas" [value]="marca.brandid">
+                                            {{ marca.name }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="form-group">
+                                <mat-form-field class="productoinput-full-width" appearance="outline">
+                                    <mat-label>Modelo</mat-label>
+                                    <input formControlName="model" matInput placeholder="Modelo">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <div class="col-md-6">
+                    <div class="card card-purple">
+                        <div class="card-header">
+                            <h3 class="card-title">Información de facturación </h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="example-full-width" cellspacing="0">
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Cantidad minima</mat-label>
+                                                <input formControlName="minimumquantity" matInput type="number" placeholder="Cantidad minima">
+                                            </mat-form-field>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Costo</mat-label>
+                                                <input formControlName="averagecost" matInput placeholder="Costo" (input)="calcularprecios()">
+                                            </mat-form-field>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Margen de utilidad contado</mat-label>
+                                                <input formControlName="utilitymargin_cash" matInput placeholder="Margen de utilidad contado">
+                                            </mat-form-field>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Margen de utilidad credito</mat-label>
+                                                <input formControlName="utilitymargin_credit" matInput placeholder="Margen de utilidad credito">
+                                            </mat-form-field>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Precio de credito</mat-label>
+                                                <input formControlName="creditprice" matInput placeholder="Precio credito">
+                                            </mat-form-field>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Precio de contado</mat-label>
+                                                <input formControlName="cashprice" matInput placeholder="Precio contado">
+                                            </mat-form-field>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Existencia inicial</mat-label>
+                                                <input formControlName="quantity" matInput placeholder="Existencia inicial">
+                                            </mat-form-field>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </form>
+
+        <div class="producto-button-container">
+            <button mat-raised-button class="producto-button" class="producto-button" color="warn" (click)="cancelar()"> Cancelar</button>
+            <button mat-raised-button class="producto-button" color="primary" (click)="guardar()"> Guardar</button>
+        </div>
+        <span class="spacer"></span>
+    </section>
+    <!-- /.content -->
+</div>
+
+
+<app-control-sidebar></app-control-sidebar>
+
+<app-main-footer></app-main-footer>

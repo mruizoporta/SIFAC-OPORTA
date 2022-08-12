@@ -1,0 +1,274 @@
+<app-main-header></app-main-header>
+<app-main-sidebar></app-main-sidebar>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 mat-dialog-title>{{titulo}}</h1>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <form class="example-form" [formGroup]="addempleadoForm" autocomplete="off">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+
+                            <h3 class="card-title">Información general</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <mat-form-field class="empleadoinput-full-width" appearance="outline">
+                                    <mat-label>Nombres</mat-label>
+                                    <input formControlName="firstname" matInput placeholder="Nombres">
+                                    <span *ngIf="campoEsValido('firstname')" class="form-text text-danger">El nombre es requerido</span>
+                                </mat-form-field>
+                            </div>
+                            <div class="form-group">
+                                <mat-form-field class="empleadoinput-full-width" appearance="outline">
+                                    <mat-label>Apellidos</mat-label>
+                                    <input formControlName="last_name" matInput placeholder="Apellidos">
+                                    <span *ngIf="campoEsValido('last_name')" class="form-text text-danger">El apellido es requerido</span>
+                                </mat-form-field>
+
+                            </div>
+                            <div class="form-group">
+                                <mat-form-field class="empleadoinput-full-width" appearance="outline">
+                                    <mat-select placeholder="Tipo de Identification" formControlName="identification_type">
+                                        <mat-option *ngFor="let tipo of TipoIdentificacion" [value]="tipo.catalogvalueid">
+                                            {{ tipo.description }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="form-group">
+                                <mat-form-field class="empleadoinput-full-width" appearance="outline">
+                                    <mat-label>Identification</mat-label>
+                                    <input formControlName="identification" matInput placeholder="Identificacion">
+                                    <span *ngIf="campoEsValido('identification')" class="form-text text-danger">La identificacion es requerido</span>
+                                </mat-form-field>
+                            </div>
+                            <div class="form-group">
+                                <mat-form-field class="empleadoinput-full-width" appearance="outline">
+                                    <mat-select placeholder="Genero" formControlName="gender_i_d">
+                                        <mat-option *ngFor="let genero of Genero" [value]="genero.catalogvalueid">
+                                            {{ genero.description }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="form-group">
+                                <mat-form-field class="empleadoinput-full-width" appearance="outline">
+                                    <mat-select placeholder="Estado civil" formControlName="maritalstatusid">
+                                        <mat-option *ngFor="let estado of EstadoCivil" [value]="estado.catalogvalueid">
+                                            {{ estado.description }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="form-group">
+                                <mat-form-field class="empleadoinput-full-width" appearance="outline">
+                                    <mat-select placeholder="Cargo" formControlName="positionid">
+                                        <mat-option *ngFor="let cargo of Cargo" [value]="cargo.catalogvalueid">
+                                            {{ cargo.description }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                            </div>
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <div class="col-md-6">
+                    <div class="card card-purple">
+                        <div class="card-header">
+                            <h3 class="card-title">Información de contacto </h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="form-group">
+                                <mat-form-field class="empleadoinput-full-width" appearance="outline">
+                                    <mat-label>Telefono</mat-label>
+                                    <input formControlName="telefono" matInput placeholder="Telefono">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="form-group">
+                                <mat-form-field class="empleadoinput-full-width" appearance="outline">
+                                    <mat-label>Correo electronico</mat-label>
+                                    <input matInput formControlName="correo" placeholder="Correo electronico">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="form-group">
+                                <mat-form-field class="empleadoinput-full-width" appearance="outline">
+                                    <mat-label>Direccion</mat-label>
+                                    <textarea formControlName="address" matInput placeholder="Direccion" rows="5"></textarea>
+
+                                </mat-form-field>
+                            </div>
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </form>
+
+        <div class="empleado-button-container">
+            <button mat-raised-button class="empleado-button" color="warn" (click)="cancelar()"> Cancelar</button>
+            <button mat-raised-button class="empleado-button" color="primary" (click)="guardar()"> Guardar</button>
+        </div>
+        <span class="spacer"></span>
+    </section>
+    <!-- /.content -->
+</div>
+
+
+<app-control-sidebar></app-control-sidebar>
+
+<app-main-footer></app-main-footer>
+<!-- <h1 mat-dialog-title>{{titulo}}</h1>
+<mat-divider></mat-divider>
+<div mat-dialog-content>
+
+    <form class="example-form" [formGroup]="addempleadoForm" autocomplete="off">
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nombres</mat-label>
+                        <input formControlName="firstname" matInput placeholder="Nombres">
+                        <span *ngIf="campoEsValido('firstname')" class="form-text text-danger">El nombre es requerido</span>
+                    </mat-form-field>
+                </td>
+
+                <td>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Apellidos</mat-label>
+                        <input formControlName="last_name" matInput placeholder="Apellidos">
+                        <span *ngIf="campoEsValido('last_name')" class="form-text text-danger">El apellido es requerido</span>
+                    </mat-form-field>
+
+                </td>
+                <td>
+                    <mat-form-field appearance="outline">
+                        <mat-select placeholder="Tipo de Identification" formControlName="identificationType">
+                            <mat-option *ngFor="let tipo of TipoIdentificacion" [value]="tipo.catalogvalueid">
+                                {{ tipo.description }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Identification</mat-label>
+                        <input formControlName="identification" matInput placeholder="Identificacion">
+                        <span *ngIf="campoEsValido('identification')" class="form-text text-danger">La identificacion es requerido</span>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+        <p>
+
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field appearance="outline">
+                            <mat-select placeholder="Genero" formControlName="gender_i_d">
+                                <mat-option *ngFor="let genero of Genero" [value]="genero.catalogvalueid">
+                                    {{ genero.description }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field appearance="outline">
+                            <mat-select placeholder="Estado civil" formControlName="maritalstatusid">
+                                <mat-option *ngFor="let estado of EstadoCivil" [value]="estado.catalogvalueid">
+                                    {{ estado.description }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </td>
+
+                    <td>
+                        <mat-form-field appearance="outline">
+                            <mat-select placeholder="Cargo" formControlName="positionid">
+                                <mat-option *ngFor="let cargo of Cargo" [value]="cargo.catalogvalueid">
+                                    {{ cargo.description }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Telefono</mat-label>
+                            <input formControlName="telefono" matInput placeholder="Telefono">
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+            <p>
+
+                <table class="example-full-width" cellspacing="0">
+                    <tr>
+                      
+                        <td>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Correo electronico</mat-label>
+                                <input matInput formControlName="correo" placeholder="Correo electronico">
+                            </mat-form-field>
+
+                        </td>
+
+
+                    </tr>
+                </table>
+
+                <p>
+
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <dt>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Direccion</mat-label>
+                                    <textarea  formControlName="address"  matInput  placeholder="Direccion"  rows="5"></textarea>
+                                   
+                                </mat-form-field>
+                            </dt>
+                        </tr>
+                    </table>
+
+    </form>
+
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close> Cancelar</button>
+    <button mat-raised-button color="primary" (click)="guardar()"> Guardar</button>
+</div> -->

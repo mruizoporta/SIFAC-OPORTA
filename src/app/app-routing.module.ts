@@ -26,6 +26,30 @@ const routes: Routes = [
     canActivate:[ValidarTokenGuard]
   },
   {
+    path:'empleado',
+    loadChildren: ()=> import('./empleados/empleados.module').then(m=> m.EmpleadosModule),
+    canLoad:[ValidarTokenGuard],
+    canActivate:[ValidarTokenGuard]
+  },
+  {
+    path:'producto',
+    loadChildren: ()=> import('./productos/productos.module').then(m=> m.ProductosModule),
+    canLoad:[ValidarTokenGuard],
+    canActivate:[ValidarTokenGuard]
+  },
+  {
+    path:'ruta',
+    loadChildren: ()=> import('./rutas/rutas.module').then(m=> m.RutasModule),
+    canLoad:[ValidarTokenGuard],
+    canActivate:[ValidarTokenGuard]
+  },
+  {
+    path:'zona',
+    loadChildren: ()=> import('./zonas/zonas.module').then(m=> m.ZonasModule),
+    canLoad:[ValidarTokenGuard],
+    canActivate:[ValidarTokenGuard]
+  },
+  {
     path:'**',
     redirectTo: 'auth'
   }

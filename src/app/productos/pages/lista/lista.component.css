@@ -1,0 +1,81 @@
+/* .example-spacer {
+    flex: 1 1 auto;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+td,
+th {
+    width: 10%;
+}
+
+
+/* .mat-header-cell {
+    background: #7E2FB6;
+    color: white
+} */
+
+
+/* 
+.mat-sort-header-stem {
+    display: none;
+}
+
+.mat-sort-header-indicator {
+    opacity: 1;
+    color: blue;
+    font-weight: bold;
+}
+
+.mat-sort-header-pointer-left,
+.mat-sort-header-pointer-right,
+.mat-sort-header-pointer-middle {
+    display: none;
+} */
+
+
+/* 
+table {
+    width: 90%;
+    margin: 10px;
+}
+
+ ::ng-deep .mat-sort-header-arrow[style] .mat-sort-header-stem {
+    display: none;
+}
+
+ ::ng-deep .mat-sort-header-arrow[style] .mat-sort-header-indicator {
+    opacity: 1;
+    color: blue;
+    font-weight: bold;
+}
+
+ ::ng-deep .mat-sort-header-arrow[style] .mat-sort-header-indicator .mat-sort-header-pointer-left,
+ ::ng-deep .mat-sort-header-arrow[style] .mat-sort-header-indicator .mat-sort-header-pointer-right,
+ ::ng-deep .mat-sort-header-arrow[style] .mat-sort-header-indicator .mat-sort-header-pointer-middle {
+    display: none;
+}
+
+[aria-sort='ascending'] ::ng-deep .mat-sort-header-arrow .mat-sort-header-indicator::before {
+    content: '▴';
+    top: 0em;
+    position: absolute;
+    color: #004e87;
+    font-size: 20px;
+    line-height: 10px;
+}
+
+[aria-sort='descending'] ::ng-deep .mat-sort-header-arrow .mat-sort-header-indicator::before {
+    content: '▾';
+    top: -15px;
+    position: absolute;
+    color: #004e87;
+    font-size: 20px;
+} */

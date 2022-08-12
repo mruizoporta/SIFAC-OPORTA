@@ -1,0 +1,17 @@
+.ruta-button-row {
+    display: table-cell;
+    width: 490px;
+}
+
+.ruta-button-container {
+    padding-bottom: 16px;
+    float: right;
+}
+
+.ruta-button+.ruta-button {
+    margin-left: 8px;
+}
+
+.rutainput-full-width {
+    width: 100%;
+}

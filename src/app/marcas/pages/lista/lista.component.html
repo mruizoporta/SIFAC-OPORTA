@@ -12,13 +12,10 @@
                         </button>
                     <span>Marcas</span>
                     <span class="example-spacer"></span>
-                    <button mat-raised-button mt-2 color="warn" (click)="openDialog()">Nuevo</button>
+                    <button mat-raised-button mt-2 color="warn" (click)="openDialog()">Nuevo
+                        <span class="material-icons">add</span>
+                    </button>
                     <span class="spacer"></span>
-                    <button mat-raised-button (click)="exportToExcel()">
-                            <mat-icon><span class="material-icons">
-                                file_download
-                                </span></mat-icon>
-                        </button>
 
                 </mat-toolbar>
 
@@ -31,10 +28,7 @@
 
                         <div class="mat-elevation-z8">
                             <table id="BrandTable" mat-table [dataSource]="dataSource" matSort>
-                                <ng-container style="display:none" matColumnDef="brandid">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-                                    <td mat-cell *matCellDef="let row"> {{row.brandid}} </td>
-                                </ng-container>
+
                                 <ng-container matColumnDef="name">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
                                     <td mat-cell *matCellDef="let row"> {{row.name}} </td>

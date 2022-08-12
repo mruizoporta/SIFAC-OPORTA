@@ -13,7 +13,7 @@ import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-lista',
   templateUrl: './lista.component.html',
-  styleUrls: ['./lista.component.css']
+  styleUrls: ['./lista.component.scss']
 })
 export class ListaComponent implements OnInit {
 
@@ -24,7 +24,7 @@ export class ListaComponent implements OnInit {
   ) { }
 
   dataSource!: MatTableDataSource<any>;  
-  displayedColumns: string[] = ['brandid', 'name', 'description','action'];
+  displayedColumns: string[] = ['name', 'description','action'];
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;

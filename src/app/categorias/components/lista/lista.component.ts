@@ -17,7 +17,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 @Component({
   selector: 'app-lista',
   templateUrl: './lista.component.html',
-  styleUrls: ['./lista.component.css'],
+  styleUrls: ['./lista.component.scss']
 })
 
 export class ListaComponent implements OnInit {
@@ -28,7 +28,7 @@ export class ListaComponent implements OnInit {
     public dialog: MatDialog ) { }
 
   dataSource!: MatTableDataSource<any>;  
-  displayedColumns: string[] = ['categoryid', 'name', 'description','action'];
+  displayedColumns: string[] = [ 'name', 'description','action'];
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
