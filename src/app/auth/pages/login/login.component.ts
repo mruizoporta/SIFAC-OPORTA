@@ -14,14 +14,13 @@ import swal from 'sweetalert2';
 export class LoginComponent  {
   
   miFormulario: UntypedFormGroup = this.fb.group({
-    email: ['mruiz@gmail.com', [Validators.required, Validators.email]],
-    password: ['12345678910', [Validators.required, Validators.minLength(6)]]
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]]
   })
-
+//12345678910
   constructor(private fb: UntypedFormBuilder, private router:Router, private authservice: AuthService) { }
 
-  
-  login(){  
+    login(){  
     const {email, password} = this.miFormulario.value;
    this.authservice.login(email, password)
     .subscribe(ok=> {      

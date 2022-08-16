@@ -73,7 +73,7 @@ export class AgregarComponent implements OnInit {
       maritalstatusid:[],
       identification_type:[],
       telefono:[],
-      correo:[],
+      email:['', [ Validators.email]],
       isactive: true,
       positionid:[],
       datestarted:[],
@@ -154,14 +154,17 @@ export class AgregarComponent implements OnInit {
             })
         }
     }else
-    {     
+    {  if (this.addempleadoForm.valid)
+      {  
+       
         this.actualizarEmpleado();
+        this.router.navigate(['/empleado/lista']);
+      }
     }
-    this.router.navigate(['/empleado/lista']);
+    
   }
   actualizarEmpleado(){
-    console.log('actualizar');
-    console.log(this.addempleadoForm.value);
+    
     this.empleadoServices.editarEmpleado(this.addempleadoForm.value, this.id)
     .subscribe( {
       next:(res)=>{

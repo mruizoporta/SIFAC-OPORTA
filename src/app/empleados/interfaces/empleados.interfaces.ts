@@ -28,6 +28,8 @@ export interface Empleado {
     identification_type: number;
     createdon: Date,
     createdby: string,
+    email: string,
+    telefono: string,
    
     isactive: boolean;
     datestarted: Date;

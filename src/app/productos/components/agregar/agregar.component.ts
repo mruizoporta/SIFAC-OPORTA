@@ -138,9 +138,6 @@ export class AgregarComponent implements OnInit {
     {     
         this.actualizarProducto();
     }
-
-
-
     this.router.navigate(['/producto/lista']);
   }
 

@@ -48,7 +48,8 @@ const routes: Routes = [
     loadChildren: ()=> import('./zonas/zonas.module').then(m=> m.ZonasModule),
     canLoad:[ValidarTokenGuard],
     canActivate:[ValidarTokenGuard]
-  },
+  }
+  ,
   {
     path:'**',
     redirectTo: 'auth'
@@ -56,7 +57,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{
+    useHash:true
+  } )],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

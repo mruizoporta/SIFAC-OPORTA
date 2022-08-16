@@ -7,7 +7,7 @@
         <nav class="mt-2 ">
             <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview " role="menu " data-accordion="false ">
                 <li class="nav-item ">
-                    <a href="# " [class]="getClaseCSS( 'Dashboard' )" (click)="activarMenu( 'Dashboard' )">
+                    <a [class]="getClaseCSS( 'Dashboard' )" (click)="activarMenu( 'Dashboard' )">
                         <i class="nav-icon fas fa-chart-pie "></i>
                         <p> Dashboard
                         </p>
@@ -16,7 +16,7 @@
                 <li class="nav-header ">CONFIGURACION</li>
 
                 <li class="nav-item ">
-                    <a href="empleado/lista" [class]="getClaseCSS( 'Empleados' )" (click)="activarMenu( 'Empleados' )">
+                    <a [class]="getClaseCSS( 'Empleados' )" routerLink="/empleado/lista" (click)="activarMenu( 'Empleados' )">
                         <i class=" nav-icon fa fa-address-book"></i>
                         <p> Empleados</p>
 
@@ -24,7 +24,7 @@
                 </li>
                 <li class="nav-header ">CATALOGOS</li>
                 <li class="nav-item ">
-                    <a href="zona/lista " [class]="getClaseCSS( 'Zonas' )" (click)="activarMenu( 'Zonas' )">
+                    <a [class]="getClaseCSS( 'Zonas' )" routerLink="/zona/lista" (click)="activarMenu( 'Zonas' )">
                         <i class="nav-icon fa fa-map-marker"></i>
                         <p>
                             Zonas
@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="categorias/lista " [class]="getClaseCSS( 'Categorias' )" (click)="activarMenu( 'Categorias' )">
+                    <a [class]="getClaseCSS( 'Categorias' )" routerLink="/categorias/lista" (click)="activarMenu( 'Categorias' )">
                         <i class="nav-icon fa fa-th-large"></i>
                         <p>
                             Categorias
@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="marcas/lista " [class]="getClaseCSS( 'Marcas' )" (click)="activarMenu( 'Marcas' )">
+                    <a [class]="getClaseCSS( 'Marcas' )" routerLink="/marcas/lista" (click)="activarMenu( 'Marcas' )">
                         <i class="nav-icon fa fa-bold"></i>
                         <p>
                             Marcas
@@ -49,7 +49,7 @@
                 </li>
 
                 <li class="nav-item ">
-                    <a href="producto/lista " [class]="getClaseCSS( 'Productos' )" (click)="activarMenu( 'Productos' )">
+                    <a [class]="getClaseCSS( 'Productos' )" routerLink="/producto/lista" (click)="activarMenu( 'Productos' )">
                         <i class="nav-icon fas fa-table "></i>
                         <p>
                             Productos
@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="ruta/lista " [class]="getClaseCSS( 'Rutas' )" (click)="activarMenu( 'Rutas' )">
+                    <a [class]="getClaseCSS( 'Rutas' )" routerLink="/ruta/lista" (click)="activarMenu( 'Rutas' )">
                         <i class="nav-icon  fa fa-random"></i>
                         <p>
                             Rutas

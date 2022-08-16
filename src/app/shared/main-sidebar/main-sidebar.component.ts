@@ -13,7 +13,7 @@ export class MainSidebarComponent implements OnInit  {
   
    menuActivo: string = 'Dashboard';
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -25,7 +25,7 @@ export class MainSidebarComponent implements OnInit  {
   }
 
   activarMenu( menu: string ) {
-
+    //this.router.navigateByUrl('/empleado/lista');
     //if ( menu === this.menuActivo ) { return; }
     this.menuActivo = menu;
   }

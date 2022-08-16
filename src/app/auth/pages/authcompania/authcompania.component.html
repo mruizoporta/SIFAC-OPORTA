@@ -15,7 +15,7 @@
             <select class="form-control" formControlName="compania">
                 <option value="">--Seleccione la compañía--</option>
                 <option *ngFor="let compania of companyaccount" 
-                [value]="compania.bsc_company.companyid">{{compania.bsc_company.name}} - {{compania.bsc_company.bsc_city.name}}</option>
+                [value]="compania.companyid">{{compania.name}} - {{compania.location}}</option>
                 </select>
         </div>
 

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { AuthResponse,  CompanyAccountResponse, Usuario } from '../interface/auth.interface';
 import {catchError, map} from 'rxjs/operators';
-import { of, tap, Observable } from 'rxjs';
+import { of, tap, Observable, ConnectableObservable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -43,8 +43,8 @@ export class AuthService {
     const url= `${this.baseUrl}/auth/renew`;
     const headers = new HttpHeaders()
     .set('x-token', localStorage.getItem('token')|| '')
-  
-    return this.http.get<AuthResponse>(url,{headers:headers})
+
+     return this.http.get<AuthResponse>(url,{headers:headers})
             .pipe(
               map(resp=> {
                 localStorage.setItem('token', resp.token!)
@@ -52,6 +52,8 @@ export class AuthService {
                     email:resp.email!,
                     id: resp.accountid!
                 }  
+                console.log('respuesta');
+                console.log(this._usuario);
                 return resp.ok;
               }),
               catchError(err=> of(false))

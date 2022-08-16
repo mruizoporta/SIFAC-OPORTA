@@ -36,7 +36,8 @@ export class AuthCompaniaComponent implements OnInit {
     private authService: AuthService   ) { }
 
     getcompanyaccount(){
-      this.authService.getCompanyByAccount(this.usuario.id).subscribe(data => {        
+      this.authService.getCompanyByAccount(this.usuario.id).subscribe(data => {  
+        console.log(data);     
         this.companyaccount = data}
         );    
     }
@@ -52,7 +53,7 @@ export class AuthCompaniaComponent implements OnInit {
     }
     entrar(){
       console.log(this.miFormulario.value);
-       this.saveCompany();      
+      this.saveCompany();      
       this.router.navigateByUrl('/dashboard');
       console.log('entrar');
     }

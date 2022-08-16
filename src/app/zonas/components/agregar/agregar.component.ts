@@ -91,14 +91,16 @@ guardar() {
 
 actualizarZona()
 {
+  console.log(this.addzoneForm.value);
+  console.log(this.editdata.zoneid);
     this.zoneServices.editarZone(this.addzoneForm.value, this.editdata.zoneid)
     .subscribe( {
       next:(res)=>{
         this.addzoneForm.reset();
         this.dialogRef.close('update');
-        this.notifyService.showSuccess('Marca actualizada satisfactoriamente','SIFAC')
+        this.notifyService.showSuccess('Zona actualizada satisfactoriamente','SIFAC')
       },error:()=>{
-        this.notifyService.showError('Error actualizando la marca','SIFAC')
+        this.notifyService.showError('Error actualizando la zona','SIFAC')
       }
     })
 }
