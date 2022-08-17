@@ -136,7 +136,8 @@ export class AgregarComponent implements OnInit {
       );    
   }
 
-  guardar(){
+  guardar($event: MouseEvent){
+    ($event.target as HTMLButtonElement).disabled = true;
     if (!this.router.url.includes('editar'))
     {      
       if (this.addempleadoForm.valid)
