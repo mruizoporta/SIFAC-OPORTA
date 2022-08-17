@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //baseUrl:'https://sifac-oportameza.herokuapp.com/api'
-  baseUrl:'http://localhost:8080/api'
+  baseUrl:'https://sifac-oportameza.herokuapp.com/api'
+  //baseUrl:'http://localhost:8080/api'
 };
 
 /*
