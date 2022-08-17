@@ -1,9 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { InfoUsiario } from 'src/app/services/interfaces.catalog';
 import { NotificationService } from 'src/app/services/notification.service';
+import { SharedService } from 'src/app/services/shared.service';
 import { DialogoConfirmacionComponent } from 'src/app/shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { AgregarComponent } from '../../components/agregar/agregar.component';
 import { RutasResponse } from '../../interfaces/ruta.interface';
@@ -16,27 +20,52 @@ import { RutasService } from '../../services/rutas.service';
 })
 export class ListaComponent implements OnInit {
 
-  constructor( private rutasServices: RutasService, 
+  constructor(  
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private rutasServices: RutasService, 
+    private sharedService: SharedService,
     private notifyService : NotificationService, 
     public dialog: MatDialog) { }
 
     dataSource!: MatTableDataSource<any>;  
     displayedColumns: string[] = [ 'code', 'name','collector','supervisor','secretaria','action'];
-  
+   
+   // infoaccount : InfoUsiario[] =[];   
+
     @ViewChild(MatSort) sort!: MatSort;
     @ViewChild(MatPaginator) paginator!: MatPaginator;
   
     company !: number;
+    rol: string|null="";
     productos : RutasResponse[]=[]; 
   
+    get usuario(){
+      return this.authService.usuario;
+    }
+
     getCompany() {
       return sessionStorage.getItem('company');
     }
   
-    ngOnInit(): void {
-      this.company= Number(this.getCompany());   
-      this.getRutas();
+    getRol() {
+      return sessionStorage.getItem('rol');
     }
+
+      ngOnInit(): void {
+      
+        this.company= Number(this.getCompany());       
+        this.rol = this.getRol();
+        
+      if (this.rol?.trim()=="Secretario")
+      {
+        //this.getRutas();
+        this.getRutasPropias(this.usuario.id);
+      }else{
+        this.getRutas();
+      }
+       }
+     
   
     getRutas(){
        this.rutasServices.getrutas(this.company).subscribe(
@@ -52,6 +81,25 @@ export class ListaComponent implements OnInit {
         }     
     }) 
   }
+
+  getRutasPropias(id: string){
+    this.rutasServices.getrutasPropias(this.company, id ).subscribe(
+    {
+     next:(data)=>{   
+     
+      if(data !==null){   
+       
+       this.dataSource= new MatTableDataSource(data);
+       this.dataSource.paginator= this.paginator;
+       this.dataSource.sort= this.sort;
+      }
+     },
+     error:(err)=>{
+       console.log(err);
+       this.notifyService.showError('Error obteniendo la lista','SIFAC') 
+     }     
+ }) 
+}
   
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

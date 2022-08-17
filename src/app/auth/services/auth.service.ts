@@ -30,7 +30,7 @@ export class AuthService {
                     email: resp.email!,
                     id: resp.accountid!
         }     
-        console.log(this._usuario);
+        //console.log(this._usuario);
         
       }),
       map( resp => resp.ok),
@@ -50,10 +50,9 @@ export class AuthService {
                 localStorage.setItem('token', resp.token!)
                     this._usuario={
                     email:resp.email!,
-                    id: resp.accountid!
+                    id: resp.accountid!,
                 }  
-                console.log('respuesta');
-                console.log(this._usuario);
+              
                 return resp.ok;
               }),
               catchError(err=> of(false))

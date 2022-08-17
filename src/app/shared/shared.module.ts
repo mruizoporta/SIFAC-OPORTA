@@ -8,6 +8,8 @@ import { ControlSidebarComponent } from './control-sidebar/control-sidebar.compo
 import { MainFooterComponent } from './main-footer/main-footer.component';
 import { DialogoConfirmacionComponent } from './dialogo-confirmacion/dialogo-confirmacion.component';
 import { MaterialModule } from '../material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthModule } from '../auth/auth.module';
 
 
 @NgModule({
@@ -21,7 +23,10 @@ import { MaterialModule } from '../material/material.module';
   imports: [
     CommonModule,
     SharedRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
+    AuthModule
   ],
   exports:[   
     MainHeaderComponent,

@@ -33,6 +33,7 @@ export class AgregarComponent implements OnInit {
   zonas: ZonasResponse[]=[];
   dias : CatalogValueResponse[]=[];
   id: number=0;
+  company !: number;
 
   textcolector: string="";
   textDia:string="";
@@ -64,6 +65,7 @@ export class AgregarComponent implements OnInit {
   ngOnInit(): void {
 
     this.login = this.authService.usuario.email.substring(0,this.authService.usuario.email.indexOf('@'));
+    this.company= Number(this.getCompany());   
     this.getSupervisores();
     this.getCollectores();
     this.getSecreatarias();
@@ -95,10 +97,15 @@ export class AgregarComponent implements OnInit {
     {  
       this.titulo='Agregar ruta';     
       return;
-    }else this.titulo='Editar ruta';  
+    }else {
+      this.titulo='Editar ruta'; 
   
     this.id = Number(this.activatedRoute.snapshot.paramMap.get("id"));
-
+    this.addRutasForm.controls['collectorid'].disable();  
+    this.addRutasForm.controls['supervisorid'].disable();  
+    this.addRutasForm.controls['day'].disable();  
+    this.addRutasForm.controls['bsc_city_cityid'].disable();  
+    this.addRutasForm.controls['zoneid'].disable();  
      //Buscamos los datos de la ruta
    
      this.rutasServices.getOnerutas(this.id).subscribe(
@@ -111,7 +118,7 @@ export class AgregarComponent implements OnInit {
        error:(err)=>{
          console.log(err);        
        }     
-   })    
+   })   } 
 
 
     // if (this.editdata){ 
@@ -154,7 +161,7 @@ export class AgregarComponent implements OnInit {
 
   
   getCiudades(){
-    this.rutasServices.getCiudades().subscribe(data => {        
+    this.rutasServices.getCiudades(this.company).subscribe(data => {        
       this.ciudades = data}
       );    
   }

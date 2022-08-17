@@ -16,6 +16,11 @@ export class RutasService {
     return this.http.get<RutasResponse[]>(`${this.baseUrl}/route/${companyid}`);
   }
     
+  getrutasPropias(companyid:number, id: string):Observable<RutasResponse[]>{   
+   
+    return this.http.get<RutasResponse[]>(`${this.baseUrl}/route/pro/${companyid}/${id}`);
+  }
+
   getOnerutas(id: number){   
     return this.http.get<Rutas[]>(`${this.baseUrl}/route/oneroutes/${id}`);
   }
@@ -24,9 +29,15 @@ export class RutasService {
     return this.http.get<ZonasResponse[]>(`${this.baseUrl}/zone/${companyid}`);
   }
 
-  getCiudades()
+  getCiudades(companyid:number)
   {
-    return this.http.get<CiudadesResponse[]>(`${this.baseUrl}/city/getCitybyCountry/1`);
+    if (companyid ==2)
+    {    
+      return this.http.get<CiudadesResponse[]>(`${this.baseUrl}/city/getCitybyCountry/1`);
+    }
+    else{
+    return this.http.get<CiudadesResponse[]>(`${this.baseUrl}/city/getCitybyCountry/2`);}
+
   }
 
 

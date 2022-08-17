@@ -52,10 +52,10 @@ export class AuthCompaniaComponent implements OnInit {
       this.authService.logout();
     }
     entrar(){
-      console.log(this.miFormulario.value);
+     // console.log(this.miFormulario.value);
       this.saveCompany();      
       this.router.navigateByUrl('/dashboard');
-      console.log('entrar');
+      //console.log('entrar');
     }
 
 }

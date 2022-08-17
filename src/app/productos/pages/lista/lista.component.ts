@@ -84,9 +84,9 @@ eliminarProducto(id:number)
     this.productosServices.inactivarProducto(id)
     .subscribe( {
       next:(res)=>{
-       
-        this.notifyService.showSuccess('El producto se inactivo correctamente.','SIFAC');       
         this.getproductos();
+        this.notifyService.showSuccess('El producto se inactivo correctamente.','SIFAC');       
+       
        
       },error:()=>{
         this.notifyService.showError('Error inactivando el producto','SIFAC')          
